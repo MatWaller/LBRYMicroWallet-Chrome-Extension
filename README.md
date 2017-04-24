@@ -1,9 +1,9 @@
 # LBRY Micro Wallet Extension For Google Chrome.
 
-#Dependancy 
+# Dependancy 
 1) lbrynet-deamon must be running for the extension to communicate.
 
-#Installation
+# Installation
 1) Go to `chrome://extensions/`
 2) Enable `developer mode`
 3) Load unpackaged extensions
