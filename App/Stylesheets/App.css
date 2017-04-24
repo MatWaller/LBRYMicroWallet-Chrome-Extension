@@ -55,3 +55,7 @@ ul.mainMenu>li {
 .cta {
     text-align: center;
 }
+
+.col-md-12 {
+    padding: 0 !important;
+}
