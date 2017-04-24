@@ -1,0 +1,17 @@
+{
+    "manifest_version": 2,
+
+    "name": "LBRY MicroWallet",
+    "description": "This extension allows basic management of your LBRY wallet",
+    "version": "0.1",
+    "icons": { "128": "App/Images/icon.png" },
+
+    "browser_action": {
+        "default_icon": "App/Images/icon.png",
+        "default_popup": "App/App.html",
+        "default_title": "Open LBC Wallet"
+    },
+    "permissions": [
+        "http://localhost/*"
+    ]
+}

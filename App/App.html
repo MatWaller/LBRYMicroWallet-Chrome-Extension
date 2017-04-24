@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" ng-app="WalletApp">
+
+<head>
+    <title>LBRY MicroWallet</title>
+
+    <link rel="stylesheet" type="text/css" href="Stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="Stylesheets/App.css">
+
+    <script src="Js/angular.min.js"></script>
+
+    <script src="Js/App.module.js"></script>
+
+    <script src="Components/balance-panel/balance-panel.module.js"></script>
+    <script src="Components/balance-panel/balance-panel.component.js"></script>
+    <script src="Components/withdraw-panel/withdraw-panel.module.js"></script>
+    <script src="Components/withdraw-panel/withdraw-panel.component.js"></script>
+    <script src="Components/transaction-panel/transaction-panel.module.js"></script>
+    <script src="Components/transaction-panel/transaction-panel.component.js"></script>
+
+</head>
+
+<body>
+    <div class="container" ng-init="item =  1">
+        <header class="main-header dark">
+            <ul class="mainMenu">
+                <li ng-class="{active:item == 1}">
+                    <a ng-click="item = 1" href="#">Balance</a>
+                </li>
+                <li ng-class="{active:item == 2}">
+                    <a ng-click="item = 2" href="#">Send</a>
+                </li>
+                <li ng-class="{active:item == 3}">
+                    <a ng-click="item = 3" href="#">Transactions</a>
+                </li>
+            </ul>
+        </header>
+        <balance-panel ng-show="item == 1"></balance-panel>
+        <withdraw-panel ng-show="item == 2"></withdraw-panel>
+        <transaction-panel ng-show="item == 3"></transaction-panel>
+    </div>
+</body>
+
+</html>
