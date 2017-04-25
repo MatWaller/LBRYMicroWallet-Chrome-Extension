@@ -18,11 +18,16 @@
     <script src="Components/withdraw-panel/withdraw-panel.component.js"></script>
     <script src="Components/transaction-panel/transaction-panel.module.js"></script>
     <script src="Components/transaction-panel/transaction-panel.component.js"></script>
-
 </head>
 
-<body>
+<body ng-init="utilities.isDaemonRunning();">
     <div class="container" ng-init="item =  1">
+        <div ng-hide="isDaemonRunningBool" class="daemonErrorOverlay">
+            <p>Unable to connect to lbrynet-daemon!</p>
+            <a class="btn btn-primary" ng-click="utilities.isDaemonRunning()" href="#">
+                Retry Connection?
+            </a>
+        </div>
         <header class="main-header dark">
             <ul class="mainMenu">
                 <li ng-class="{active:item == 1}">

@@ -5,7 +5,11 @@ component('balancePanel', {
     templateUrl: 'Components/balance-panel/balance-panel.component.html',
     controller: function BalancePanelController($http, $scope) {
         this.ConfirmedBalance;
-        this.getConfirmedBalance = function() {
+        $scope.$on('updateBalance', function(e) {
+            $scope.getConfirmedBalance();
+            $scope.getUnconfirmedBalance();
+        });
+        $scope.getConfirmedBalance = function() {
             $http({
                 method: 'POST',
                 url: 'http://localhost:5279/lbryapi',
@@ -15,45 +19,30 @@ component('balancePanel', {
 
             function successCallback(response) {
                 $("#ConfirmedBalance").text(response.data.result);
-            }
-
-            function errorCallback(error) {
-                console.log(error);
-            }
-        }
-
-        $scope.getUnconfirmedBalance = function($http) {
-            return 0;
-        }
-        $scope.getTotalBalance = function($http) {
-            $http({
-                method: 'POST',
-                url: 'http://localhost:5279/lbryapi',
-                headers: { 'content-type': 'application/json; charset=UTF-8' },
-                data: { "method": "wallet_balance" }
-            }).then(successCallback, errorCallback);
-
-            function successCallback(response) {
                 $("#TotalBalance").text(response.data.result);
             }
 
             function errorCallback(error) {
-                console.log(error);
+                $("#ConfirmedBalance").text('Unable to get balance.');
             }
+        }
+
+        $scope.getUnconfirmedBalance = function($http) {
+            $("#UnconfirmedBalance").text("0");
         }
 
         $scope.balances = [{
             label: 'Confirmed Balance',
             id: 'ConfirmedBalance',
-            value: this.getConfirmedBalance($http)
+            value: 'Loading balance...'
         }, {
             label: 'Unconfirmed Balance',
             id: 'UnconfirmedBalance',
-            value: $scope.getUnconfirmedBalance($http)
+            value: 'Loading balance...'
         }, {
             label: 'Total Balance',
             id: 'TotalBalance',
-            value: $scope.getTotalBalance($http)
+            value: 'Loading balance...'
         }];
     }
 });

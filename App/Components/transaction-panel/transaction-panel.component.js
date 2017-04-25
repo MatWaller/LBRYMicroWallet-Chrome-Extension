@@ -16,10 +16,9 @@ component('transactionPanel', {
 
         function successCallback(response) {
             $.each(response.data.result, function(index, value) {
-                console.log(value);
                 $("#txTable")
                     .append(
-                        "<tr><td>" + value.date + "</td><td>" + value.value + "</td><td><a target=\"_blank\" href=\"https://explorer.lbry.io/tx/" + value.txid + "\">View</a></td></tr>"
+                        "<tr><td>" + value.date + "</td><td>" + value.value + "</td><td><a class=\"view\" target=\"_blank\" href=\"https://explorer.lbry.io/tx/" + value.txid + "\">View</a></td></tr>"
                     );
             });
         }

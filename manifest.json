@@ -12,6 +12,12 @@
         "default_title": "Open LBC Wallet"
     },
     "permissions": [
-        "http://localhost/*"
-    ]
+        "http://localhost/*",
+        "tabs",
+        "webNavigation"
+    ],
+    "background": {
+        "scripts": ["App/Js/background.js"],
+        "persistent": true
+    }
 }
